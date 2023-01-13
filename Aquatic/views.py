@@ -9,11 +9,11 @@ def crear_alumno(request):
 
 def crear_ropa(request):
     ropa_nueva = Ropa.objects.create( nombre = 'Sandalias', tamaño = 'Talla 4', precio = '100 pesos')
-    return HttpResponse('Haz creado un nuevo alumno')
+    return HttpResponse('Haz creado una nueva prenda')
 
 def crear_clase(request):
     clase_nueva = Clases.objects.create( nombre = 'Natación', duracion = '1 hora', maestro = 'Marco Díaz')
-    return HttpResponse('Haz creado un nuevo alumno')
+    return HttpResponse('Haz creado una nueva clase')
 
 
 

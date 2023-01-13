@@ -1,13 +1,25 @@
-{% extends 'Base.html' %} 
+{% extends 'Base.html' %}
 
-
-{% block title %} 
+{% block title %}
 Listado de Clases
 {% endblock %}
 
-
-
 {% block content %}
 
+<body>
+            {% for ropa in ropa %}
 
+            <div class="card" style="width: 18rem;">
+                <img src="https://img.freepik.com/vector-gratis/conjunto-ropa-verano_74855-446.jpg?w=2000" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> Nombre: {{ropa.nombre}} </h5>
+                    <p class="card-text"> Tamaño: {{ropa.tamaño}} </p>
+                    <p class="card-text"> Precio: {{ropa.precio}} </p>
+                    <a href="#" class="btn btn-primary"> Ver más información de la prenda </a>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}
+</body>
+
+</html>

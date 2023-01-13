@@ -1,13 +1,25 @@
-{% extends 'Base.html' %} 
+{% extends 'Base.html' %}
 
-
-{% block title %} 
+{% block title %}
 Listado de Clases
 {% endblock %}
 
-
-
 {% block content %}
 
+<body>
+            {% for clases in clases %}
 
+            <div class="card" style="width: 18rem;">
+                <img src="https://concepto.de/wp-content/uploads/2019/06/natacion-e1562943144215.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> Nombre: {{clases.nombre}} </h5>
+                    <p class="card-text"> Duración: {{clases.duracion}} </p>
+                    <p class="card-text"> Maestro: {{clases.maestro}} </p>
+                    <a href="#" class="btn btn-primary"> Ver más información del maestro </a>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}
+</body>
+
+</html>
