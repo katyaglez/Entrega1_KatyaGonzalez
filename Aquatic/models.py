@@ -8,7 +8,7 @@ class Alumno(models.Model):
 class Ropa(models.Model):
     nombre = models.CharField(max_length=30)
     tamaño = models.CharField(max_length=30)
-    precio = models.FloatField()
+    precio = models.CharField(max_length=30)
 
 class Clases(models.Model):
     nombre = models.CharField(max_length=30)

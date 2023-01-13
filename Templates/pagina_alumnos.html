@@ -1,13 +1,25 @@
-{% extends 'Base.html' %} 
+{% extends 'Base.html' %}
 
-
-{% block title %} 
-Pagina de Listado de Alumnos
+{% block title %}
+Listado de Alumnos
 {% endblock %}
-
-
 
 {% block content %}
 
+<body>
+            {% for alumnos in alumnos %}
 
+            <div class="card" style="width: 18rem;">
+                <img src="https://mibebeyyo.mx/images/nombres/nombres-de-nina.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> Nombre: {{alumnos.nombre}} </h5>
+                    <p class="card-text"> Edad: {{alumnos.edad}} </p>
+                    <p class="card-text"> Domicilio: {{alumnos.domicilio}} </p>
+                    <a href="#" class="btn btn-primary"> Ver más información del Alumno </a>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}
+</body>
+
+</html>
