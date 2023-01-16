@@ -2,10 +2,35 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from Aquatic.models import Alumno, Ropa, Clases
+from Aquatic.forms import AlumnoForm
 
 def crear_alumno(request):
-    nuevo_alumno = Alumno.objects.create( nombre = 'Katya', edad = 27, domicilio = 'Riva Palacio 123' ) 
-    return HttpResponse('Haz creado un nuevo alumno')
+    if request.method == 'GET':
+        context = {
+            'form': AlumnoForm()
+        }
+
+        return render(request, 'crear_alumno.html', context=context)
+
+    elif request.method == 'POST':
+        form = AlumnoForm(request.POST)
+        if form.is_valid():
+            Alumno.objects.create(
+                nombre=form.cleaned_data['nombre'],
+                edad=form.cleaned_data['edad'],
+                domicilio=form.cleaned_data['domicilio'],
+            )
+            context= {
+                'message': 'Alumno creado exitosamente'
+            }
+            return render(request, 'crear_alumno.html', context=context)
+        else:
+            context= {
+                'form_errors': form.errors,
+                'form': AlumnoForm()
+            }
+            return render(request, 'crear_alumno.html', context=context)
+
 
 def crear_ropa(request):
     ropa_nueva = Ropa.objects.create( nombre = 'Sandalias', tamaño = 'Talla 4', precio = '100 pesos')
