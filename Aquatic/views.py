@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from Aquatic.models import Alumno, Ropa, Clases
 from Aquatic.forms import AlumnoForm
 
+
 def crear_alumno(request):
     if request.method == 'GET':
         context = {
@@ -54,7 +55,11 @@ def lista_alumnos(request):
     return render (request, 'pagina_alumnos.html', context = context)
 
 def lista_ropa(request):
-    todas_las_ropas = Ropa.objects.all()
+    if 'search' in request.GET:
+        search = request.GET['search']
+        todas_las_ropas = Ropa.objects.filter(name__icontains=search)
+    else:
+        todas_las_ropas = Ropa.objects.all()
     context = {
         'ropa': todas_las_ropas,
     }
