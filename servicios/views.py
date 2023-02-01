@@ -37,9 +37,8 @@ def servicios_create(request):
             }
             return render(request, 'servicios/servicios-create.html', context=context)
 
-def servicios_update(request, id):
-    servicios = Servicios.objects.get(id=id)
-
+def servicios_update(request, pk):
+    servicios = Servicios.objects.get(id=pk)
 
     if request.method == 'GET':
         context = {
@@ -52,18 +51,17 @@ def servicios_update(request, id):
                 }
             )
         }
-
         return render(request, 'servicios/servicios-update.html', context=context)
 
     elif request.method == 'POST':
         form = ServiciosForm(request.POST)
         if form.is_valid():
-            servicios.update(
-                nombre = form.cleaned_data['nombre'],
-                duracion = form.cleaned_data['duracion'],
-                maestro = form.cleaned_data['maestro'],
-                condition = form.cleaned_data['condition'],
-            )
+            servicios.nombre = form.cleaned_data['nombre']
+            servicios.duracion = form.cleaned_data['duracion']
+            servicios.maestro = form.cleaned_data['maestro']
+            servicios.condition = form.cleaned_data['condition']
+            servicios.save()
+            
             context= {
                 'message': 'Servicio actualizado exitosamente'
             }
@@ -72,4 +70,4 @@ def servicios_update(request, id):
                 'form_errors': form.errors,
                 'form': ServiciosForm()
             }
-            return render(request, 'servicios/servicios-update.html', context=context)
+        return render (request, 'servicios/servicios-update.html', context=context)
