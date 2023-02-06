@@ -32,10 +32,25 @@
                     <a class="nav-link" href="/Aquatic/lista-ropa/"> Listado de Ropa <span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active" style="margin-right: 350px;">
                     <a class="nav-link" href="/servicios/servicios-list/"> Otros Servicios <span
                             class="sr-only">(current)</span></a>
                 </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/servicios/servicios-list/"> Salir <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                { % else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/servicios/servicios-list/"> Ingresar <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/servicios/servicios-list/"> Registro <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/Aquatic/lista-ropa/" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
