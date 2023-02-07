@@ -37,18 +37,18 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 {% if request.user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="/servicios/servicios-list/"> Salir <span
-                            class="sr-only">(current)</span></a>
+                <li class="nav-item active"> 
+                    <a class="nav-link" href="/users/logout/"> Salir <span class="sr-only">(current)</span></a>
                 </li>
-                { % else %}
+                <li class="nav-item active"> 
+                    <a class="nav-link" href="/users/update/"> {{request.user.username}} <span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="/servicios/servicios-list/"> Ingresar <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/users/login/"> Ingresar <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/servicios/servicios-list/"> Registro <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/users/signup/"> Registrarse <span class="sr-only">(current)</span></a>
                 </li>
                 {% endif %}
             </ul>

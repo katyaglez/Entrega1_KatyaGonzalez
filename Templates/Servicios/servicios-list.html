@@ -7,8 +7,11 @@ Otros Servicios
 {% block content %}
 
     <h1>Conoce nuestros otros servicios</h1>
-    <h2>Crear nuevo servicio</h2> <a href="/servicios/servicios-create/"class="btn btn-primary">Crear</a>
-
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <h2>Crear nuevo servicio</h2> <a href="/servicios/servicios-create/"class="btn btn-primary">Crear</a>
+        {% endif %}
+    {% endif %}
 <body>
             {% for servicios in object_list %}
 

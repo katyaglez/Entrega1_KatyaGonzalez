@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from servicios.models import Servicios
 from servicios.forms import ServiciosForm
 
@@ -10,7 +11,7 @@ def servicios_list(request):
     }
     return render(request, 'servicios/servicios-list.html', context=context)
 
-class ServiciosListView(ListView):
+class ServiciosListView(LoginRequiredMixin, ListView):
     model = Servicios
     template_name = 'servicios/servicios-list.html'
     queryset = Servicios.objects.filter(is_active = True)

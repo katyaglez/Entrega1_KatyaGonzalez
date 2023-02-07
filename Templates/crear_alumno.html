@@ -7,7 +7,8 @@ Creación de Alumnos
 {% block content %}
 
     <h1>Ingrese el nuevo alumno</h1>
-
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
     {% if form %}
 
     <form action="" method="POST">
@@ -20,7 +21,7 @@ Creación de Alumnos
 
 
         <input type="submit" value="Crear alumno">
-
+    {% endif %}
     </form>
 
     {% endif %}
