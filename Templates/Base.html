@@ -32,7 +32,7 @@
                     <a class="nav-link" href="/Aquatic/lista-ropa/"> Listado de Ropa <span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active" style="margin-right: 350px;">
+                <li class="nav-item active" style="margin-right: 600px;">
                     <a class="nav-link" href="/servicios/servicios-list/"> Otros Servicios <span
                             class="sr-only">(current)</span></a>
                 </li>
@@ -43,6 +43,9 @@
                 <li class="nav-item active"> 
                     <a class="nav-link" href="/users/update/"> {{request.user.username}} <span class="sr-only">(current)</span></a>
                 </li>
+                {% if request.user.profile.profile_picture.url != '' %}
+                <img class="profile_picture" src="{{request.user.profile.profile_picture.url}}" alt="profile_picture" width="50px" height="50"/>
+                {% endif %}
                 {% else %}
                 <li class="nav-item active">
                     <a class="nav-link" href="/users/login/"> Ingresar <span class="sr-only">(current)</span></a>
@@ -53,8 +56,6 @@
                 {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/Aquatic/lista-ropa/" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscador</button>
             </form>
         </div>
     </nav>

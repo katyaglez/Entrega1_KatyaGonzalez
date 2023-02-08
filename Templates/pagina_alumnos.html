@@ -8,18 +8,18 @@ Listado de Alumnos
 
 <body>
             {% for alumnos in alumnos %}
-
+        {% if request.user.is_authenticated  %}
             <div class="card" style="width: 18rem;">
                 <img src="https://mibebeyyo.mx/images/nombres/nombres-de-nina.webp" class="card-img-top" alt="...">
                 <div class="card-body">
-                    {% if request.user.is_authenticated  %}
+
                         {% if request.user.is_superuser %}
                             <h5 class="card-title"> Nombre: {{alumnos.nombre}} </h5>
                             <p class="card-text"> Edad: {{alumnos.edad}} </p>
                             <p class="card-text"> Domicilio: {{alumnos.domicilio}} </p>
                             <a href="#" class="btn btn-primary"> Ver más información del Alumno </a>
-                    {% else %}
-                        <p class="card-text"> Inice sesión para conocer el listado de alumnos </p>
+        {% else %}
+                        <p class="card-text"> Inicie sesión para conocer el listado de alumnos </p>
                         {% endif %}
                     {% endif %}
                 </div>

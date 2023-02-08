@@ -10,6 +10,8 @@ Página de Inicio
 </pre>
     {{request.user}}
 
+    {{request.user.profile.phone}}
+
     {% if message %}
         <h2>{{message}}</h2>
     {% endif %}
