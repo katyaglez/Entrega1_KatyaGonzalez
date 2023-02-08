@@ -22,8 +22,10 @@ Otros Servicios
                     <p class="card-text"> Duración: {{servicios.duracion}} </p>
                     <p class="card-text"> Maestro: {{servicios.maestro}} </p>
                     <a href="#" class="btn btn-primary"> Inscribirse a la clase </a>
-                    <a href="/servicios/servicios-update/{{servicios.id}}/" class="btn btn-primary"> Actualizar </a>
-                    <a href="/servicios/servicios-delete/{{servicios.id}}/" class="btn btn-danger"> Borrar </a>
+                    {% if request.user.is_superuser %}
+                        <a href="/servicios/servicios-update/{{servicios.id}}/" class="btn btn-primary"> Actualizar </a>
+                        <a href="/servicios/servicios-delete/{{servicios.id}}/" class="btn btn-danger"> Borrar </a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
